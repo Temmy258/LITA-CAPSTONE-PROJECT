@@ -11,7 +11,8 @@ The Sales and Customer Data project is a project aimed at gathering and analysin
 3. To be able to get the average subscription duration and identify the most popular subscription type.
 
 ## Data Sources
-1. Sales and Customer Database
+1. Sales Data- Information on transactions, sales volume, product details and revenue.
+2. Customer Data- Customer profile,purchase history and feedback.
 
 ## Tools and Technologies
 Through out this project i will be using the following tools,

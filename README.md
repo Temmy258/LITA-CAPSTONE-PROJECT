@@ -16,5 +16,6 @@ The Sales and Customer Data project is a project aimed at gathering and analysin
 
 ## Tools and Technologies
 Through out this project i will be using the following tools,
-1. Data analysis- Microsoft Excel,SQL.
-2. Data visualization- PowerBI.
+1. Data analysis- Microsoft Excel[Download Here](https://www.microsoft.com)
+2. SQL.
+3. Data visualization- PowerBI.

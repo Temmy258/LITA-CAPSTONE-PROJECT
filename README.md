@@ -56,8 +56,99 @@ The customer subscription data includes:
 ## Tools and Technologies
 Through out this project i will be using the following tools,
 1. Data analysis- Microsoft Excel[Download Here](https://1drv.ms/x/c/2bde39261423f390/EXul9CxndSZAo-FpB2wWV-QBe-u64ER1OeEZml0JpAcE0A?e=pqppAf )
-2. SQL.
-3. Data visualization- PowerBI.
+```SQL
+ SELECT Region, COUNT(CustomerID) AS TotalCustomers
+select * FROM CustomerData
+GROUP By Region
+
+SELECT SubscriptionType, COUNT(CustomerID) AS TotalCustomers
+
+select * FROM CustomerData
+
+Group By SubscriptionType
+
+SELECT CustomerID, CustomerName, SubscriptionStart, SubscriptionEnd
+
+select* FROM CustomerData
+
+WHERE Canceled = 'TRUE'
+
+AND DATEDIFF(day, SubscriptionEnd, SubscriptionStart) <=180;
+
+SELECT AVG(DATEDIFF(month, SubscriptionEnd, SubscriptionStart)) AS AvgSubscriptionDuration
+
+select * From CustomerData
+
+SELECT CustomerID, CustomerName, SubscriptionStart, SubscriptionEnd
+
+select * FROM CustomerData
+
+WHERE DATEDIFF(day, SubscriptionEnd, SubscriptionStart) >365;
+
+Select subscriptiontype, sum(revenue) AS TotalRevenue
+
+select * From CustomerData
+
+GROUP By SubscriptionType
+
+Select TOP 3 region, count(subscriptionend) AS cancellations
+
+select * From CustomerData
+
+WHERE subscriptionend IS NOT NULL
+
+Group By region 
+
+SELECT Canceled, COUNT(CustomerID) AS TotalSubscriptions
+
+select * From CustomerData
+
+GROUP By Canceled
+```
+
+```SQL
+------Retrieve the total sales for each product category-----
+SELECT Product, SUM(Quantity * UnitPrice) AS Total_Sales
+FROM SalesData
+GROUP By Product
+
+-----Find the number of sales transactions in each region-----
+SELECT Region, COUNT(*) AS Total_Sales_Value
+FROM SalesData
+GROUP By Region
+
+------Find the highest-selling product by total sales value----
+SELECT TOP 1 Product, Sum(Quantity * UnitPrice) AS Total_Sales_Value
+FROM SalesData
+GROUP By Product
+ORDER By Total_Sales_Value DESC
+
+-------Calculate total revenue per product-----
+SELECT Product, Sum(Quantity * UnitPrice) as Total_Revenue
+FROM SalesData
+GROUP By Product
+ORDER By 2 DESC
+
+------Calculate monthly sales totals for the current year----
+SELECT OrderDate As Monthly_Sales_Total, Sum(Quantity * UnitPrice) AS Monthly_Sales_Total
+FROM SalesData
+WHERE OrderDate LIKE '2024'
+GROUP By OrderDate
+
+-----Find the top 5 customers by total purchase amount-----
+SELECT TOP 5 Customer_Id, Sum(Quantity * UnitPrice) AS Total_Purchase_Amount
+FROM SalesData
+GROUP By Customer_Id
+ORDER By 2 DESC
+
+------Calculate the percentage of total sales contributed by each region----
+SELECT Region,
+	Round((Sum(Quantity * UnitPrice) / (SELECT SUM(CAST(Quantity * UnitPrice AS FLOAT)) FROM SalesData) * 100), 1) AS Percentage_Of_Total_Sales
+FROM SalesData
+GROUP By Region
+```
+
+5. Data visualization- PowerBI.
 
 ### Conclusion
 Both sales and customer data provides insights to enhance decision making. By utilizing PowerBI for interactive dashboard, these project enables users to explore data and make data backed strategic adjustment in product sales, customer rention amd market growth strategies.

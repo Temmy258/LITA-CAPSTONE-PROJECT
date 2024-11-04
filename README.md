@@ -109,42 +109,42 @@ GROUP By Canceled
 ```SQL
 ------Retrieve the total sales for each product category-----
 SELECT Product, SUM(Quantity * UnitPrice) AS Total_Sales
-FROM SalesData
+select * FROM SalesData
 GROUP By Product
 
 -----Find the number of sales transactions in each region-----
 SELECT Region, COUNT(*) AS Total_Sales_Value
-FROM SalesData
+select *FROM SalesData
 GROUP By Region
 
 ------Find the highest-selling product by total sales value----
 SELECT TOP 1 Product, Sum(Quantity * UnitPrice) AS Total_Sales_Value
-FROM SalesData
+select * FROM SalesData
 GROUP By Product
 ORDER By Total_Sales_Value DESC
 
 -------Calculate total revenue per product-----
 SELECT Product, Sum(Quantity * UnitPrice) as Total_Revenue
-FROM SalesData
+select *FROM SalesData
 GROUP By Product
 ORDER By 2 DESC
 
 ------Calculate monthly sales totals for the current year----
 SELECT OrderDate As Monthly_Sales_Total, Sum(Quantity * UnitPrice) AS Monthly_Sales_Total
-FROM SalesData
+select * FROM SalesData
 WHERE OrderDate LIKE '2024'
 GROUP By OrderDate
 
 -----Find the top 5 customers by total purchase amount-----
 SELECT TOP 5 Customer_Id, Sum(Quantity * UnitPrice) AS Total_Purchase_Amount
-FROM SalesData
+select * FROM SalesData
 GROUP By Customer_Id
 ORDER By 2 DESC
 
 ------Calculate the percentage of total sales contributed by each region----
 SELECT Region,
 	Round((Sum(Quantity * UnitPrice) / (SELECT SUM(CAST(Quantity * UnitPrice AS FLOAT)) FROM SalesData) * 100), 1) AS Percentage_Of_Total_Sales
-FROM SalesData
+select * FROM SalesData
 GROUP By Region
 ```
 
